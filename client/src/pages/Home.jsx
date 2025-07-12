@@ -7,7 +7,7 @@ import EmailSection from "../components/EmailSection";
 
 const Home = () => {
   return (
-    <div className="px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
+    <div className="">
       <Hero />
       <Categories />
       <BestSeller />

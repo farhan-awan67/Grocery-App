@@ -4,7 +4,7 @@ import { assets } from "../assets/greencart_assets/assets";
 import { useAppContext } from "../context/AppContext";
 
 const Navbar = () => {
-  const { user, getCartCount } = useAppContext();
+  const { user, getCartCount, showLogin, setShowLogin } = useAppContext();
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,7 +52,10 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <button className="cursor-pointer px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full">
+          <button
+            onClick={() => setShowLogin(!showLogin)}
+            className="cursor-pointer px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full"
+          >
             Login
           </button>
         )}

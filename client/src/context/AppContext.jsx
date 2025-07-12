@@ -8,6 +8,8 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [cartData, setCartData] = useState({});
+  const [showLogin, setShowLogin] = useState(false);
+  console.log(showLogin);
 
   console.log("dummy products", dummyProducts);
 
@@ -75,6 +77,8 @@ export const AppContextProvider = ({ children }) => {
     deleteItem,
     cartData,
     getCartCount,
+    showLogin,
+    setShowLogin,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
