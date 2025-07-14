@@ -18,8 +18,11 @@ const BestSeller = () => {
               product,
               idx // Step 3: Render each ProductCard
             ) => (
-              <Link to={`/products/${product.category}/${product._id}`}>
-                <ProductCard key={idx} product={product} />
+              <Link
+                key={idx}
+                to={`/products/${product.category}/${product._id}`}
+              >
+                <ProductCard product={product} />
               </Link>
             )
           )}
