@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import ProductCard from "./ProductCard";
 import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 
 const BestSeller = () => {
   const { products } = useAppContext();
@@ -17,7 +18,9 @@ const BestSeller = () => {
               product,
               idx // Step 3: Render each ProductCard
             ) => (
-              <ProductCard key={idx} product={product} />
+              <Link to={`/products/${product.category}/${product._id}`}>
+                <ProductCard key={idx} product={product} />
+              </Link>
             )
           )}
       </div>

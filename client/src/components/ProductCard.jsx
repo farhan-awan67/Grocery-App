@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { assets } from "../assets/greencart_assets/assets";
 import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const [count, setCount] = useState(0);

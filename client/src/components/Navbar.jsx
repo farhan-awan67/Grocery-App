@@ -25,7 +25,7 @@ const Navbar = () => {
         </Link>
 
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">All Products</NavLink>
+        <NavLink to="/products">All Products</NavLink>
 
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
           <input
