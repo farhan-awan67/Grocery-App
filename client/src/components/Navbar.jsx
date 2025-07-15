@@ -1,11 +1,25 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../assets/greencart_assets/assets";
 import { useAppContext } from "../context/AppContext";
 
 const Navbar = () => {
-  const { user, getCartCount, showLogin, setShowLogin } = useAppContext();
+  const {
+    user,
+    getCartCount,
+    showLogin,
+    setShowLogin,
+    userSearch,
+    setUserSearch,
+  } = useAppContext();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    navigate("/products");
+    setUserSearch(value);
+  };
 
   return (
     <nav className="flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
@@ -29,8 +43,10 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
           <input
+            onChange={handleChange}
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
             type="text"
+            value={userSearch}
             placeholder="Search products"
           />
           <img src={assets.search_icon} alt="search_icon" />

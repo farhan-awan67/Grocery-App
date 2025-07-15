@@ -5,7 +5,7 @@ import { assets } from "../assets/greencart_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 
 const SpecificProduct = () => {
-  const { products, currency } = useAppContext();
+  const { products, currency, addToCart } = useAppContext();
   const { productId } = useParams();
   const [specificProduct, setSpecificProduct] = useState(null);
   const [image, setImage] = useState("");
@@ -90,7 +90,10 @@ const SpecificProduct = () => {
               })}
             </ul>
             <div className="flex items-center mt-10 gap-4 text-base">
-              <button className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition">
+              <button
+                onClick={() => addToCart(specificProduct._id)}
+                className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
+              >
                 Add to Cart
               </button>
               <button className="w-full py-3.5 cursor-pointer font-medium bg-[#4fbf8b] text-white hover:bg-primary-dull transition">
