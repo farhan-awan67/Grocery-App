@@ -43,11 +43,11 @@ export const AppContextProvider = ({ children }) => {
     toast.success("Added to cart");
   };
 
-  const updateCart = (id) => {
+  const updateQuantity = (id, quanity) => {
     let cartItem = structuredClone(cartData);
-    cartItem[id] += 1;
+    cartItem[id] = Number(quanity);
     setCartData(cartItem);
-    toast.success("cart updated");
+    toast.success("quanity updated");
   };
 
   const deleteItem = (id) => {
@@ -63,10 +63,26 @@ export const AppContextProvider = ({ children }) => {
   };
 
   const getCartCount = () => {
-    let count = 0;
-    count = Object.keys(cartData || {}).length;
-    return count;
+    let totalCount = 0;
+    for (let item in cartData) {
+      totalCount += cartData[item];
+    }
+    return totalCount;
   };
+
+  const getTotalAmount = () => {
+    let totalAmount = 0;
+    let productsCopy = products.slice();
+
+    for (let item in cartData) {
+      let itemInfo = productsCopy.find((product) => product._id == item);
+      if (itemInfo) {
+        totalAmount += itemInfo.offerPrice * cartData[item];
+      }
+    }
+    return Math.floor(totalAmount * 100) / 100;
+  };
+  getTotalAmount();
 
   const value = {
     user,
@@ -74,7 +90,7 @@ export const AppContextProvider = ({ children }) => {
     products,
     setProducts,
     addToCart,
-    updateCart,
+    updateQuantity,
     deleteItem,
     cartData,
     getCartCount,
@@ -83,6 +99,7 @@ export const AppContextProvider = ({ children }) => {
     currency,
     userSearch,
     setUserSearch,
+    getTotalAmount,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

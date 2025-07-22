@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/greencart_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
@@ -9,6 +9,7 @@ const SpecificProduct = () => {
   const { productId } = useParams();
   const [specificProduct, setSpecificProduct] = useState(null);
   const [image, setImage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (products && products.length > 0) {
@@ -96,7 +97,10 @@ const SpecificProduct = () => {
               >
                 Add to Cart
               </button>
-              <button className="w-full py-3.5 cursor-pointer font-medium bg-[#4fbf8b] text-white hover:bg-primary-dull transition">
+              <button
+                onClick={() => navigate("/cart")}
+                className="w-full py-3.5 cursor-pointer font-medium bg-[#4fbf8b] text-white hover:bg-primary-dull transition"
+              >
                 Buy now
               </button>
             </div>

@@ -52,10 +52,13 @@ const Navbar = () => {
           <img src={assets.search_icon} alt="search_icon" />
         </div>
 
-        <div className="relative cursor-pointer">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate("/cart")}
+        >
           <img className="w-5 h-5" src={assets.cart_icon} alt="cart_icon" />
           <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
-            3
+            {getCartCount()}
           </button>
         </div>
 
