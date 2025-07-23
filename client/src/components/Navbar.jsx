@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
-      <NavLink to="/" onClick={() => setOpen(!open)}>
+      <NavLink to="/" onClick={() => setOpen(false)}>
         <img className="h-7 sm:h-9" src={assets.logo} alt="Logo" />
       </NavLink>
 
@@ -32,9 +32,8 @@ const Navbar = () => {
         {/* seller dashboard */}
         <Link
           to={"/seller-dashboard"}
-          className="border border-[#E1D3D7] py-1 px-2 rounded-full text-[#B28682] text-sm whitespace-nowrap"
+          className="border border-[#E1D3D7] py-1 px-2 rounded-full text-[#B28682] text-xs whitespace-nowrap"
         >
-          {" "}
           seller dashboard
         </Link>
 
@@ -53,11 +52,15 @@ const Navbar = () => {
         </div>
 
         <div
-          className="relative cursor-pointer"
+          className="relative cursor-pointer text-[#4fbf8b]"
           onClick={() => navigate("/cart")}
         >
-          <img className="w-5 h-5" src={assets.cart_icon} alt="cart_icon" />
-          <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
+          <img
+            className="w-6 h-6 "
+            src={assets.nav_cart_icon}
+            alt="cart_icon"
+          />
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-[#4fbf8b] w-[18px] h-[18px] rounded-full">
             {getCartCount()}
           </button>
         </div>
@@ -73,7 +76,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => setShowLogin(!showLogin)}
-            className="cursor-pointer px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full"
+            className="cursor-pointer px-8 py-2 bg-[#4fbf8b]  transition text-white rounded-full"
           >
             Login
           </button>
@@ -83,7 +86,7 @@ const Navbar = () => {
       <div className="flex sm:hidden gap-7 items-center">
         <div className="relative cursor-pointer">
           <img className="w-5 h-5" src={assets.cart_icon} alt="cart_icon" />
-          <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-[#4fbf8b] w-[18px] h-[18px] rounded-full">
             3
           </button>
         </div>
@@ -101,7 +104,7 @@ const Navbar = () => {
       <div
         className={`${
           open ? "flex" : "hidden"
-        } absolute top-[80px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}
+        } absolute top-[80px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden z-50`}
       >
         <NavLink to="/" className="block">
           Home
@@ -112,7 +115,7 @@ const Navbar = () => {
         <NavLink to="/contact" className="block">
           Contact
         </NavLink>
-        <button className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
+        <button className="cursor-pointer px-6 py-2 mt-2 bg-[#4fbf8b] transition text-white rounded-full text-sm">
           Login
         </button>
       </div>

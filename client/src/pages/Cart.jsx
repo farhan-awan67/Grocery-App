@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, Links } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { assets, dummyAddress } from "../assets/greencart_assets/assets";
 
@@ -29,7 +30,6 @@ const Cart = () => {
 
   const deleteItemFromCart = (id) => {
     let productsFromState = showProdcuts.slice();
-    console.log("product from state", productsFromState);
     let productsAfterDeletion = productsFromState.filter(
       (product) => product._id !== id
     );
@@ -59,13 +59,16 @@ const Cart = () => {
                 className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3"
               >
                 <div className="flex items-center md:gap-6 gap-3">
-                  <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
+                  <Link
+                    to={`/products/${product.catrgory}/${product._id}`}
+                    className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded"
+                  >
                     <img
                       className="max-w-full h-full object-cover"
                       src={product.image[0]}
                       alt=""
                     />
-                  </div>
+                  </Link>
                   <div>
                     <p className="hidden md:block font-semibold">
                       {product.name}
@@ -115,6 +118,18 @@ const Cart = () => {
                     src={assets.remove_icon}
                   />
                 </button>
+
+                <Link
+                  to={"/products"}
+                  className="text-[#4fbf8b] mt-5 w-max flex text-sm gap-2 group"
+                >
+                  <img
+                    className="w-4 group-hover:-translate-x-1 transition"
+                    src={assets.arrow_right_icon_colored}
+                    alt=""
+                  />
+                  Continue Shopping
+                </Link>
               </div>
             );
           })}

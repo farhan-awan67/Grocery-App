@@ -26,14 +26,14 @@ const Hero = () => {
             className="group flex items-center gap-2 px-7 md:px-9 py-3 bg-[#4fbf8b] hover:bg-primary-dull transition rounded text-white cursor-pointer"
             to={"/products"}
           >
-            Shop now <img src={assets.white_arrow_icon} alt="" />
+            Shop now 
           </Link>
 
           <Link
             className="group hidden md:flex items-center gap-2 px-9 py-3 cursor-pointer"
             to={"/deals"}
           >
-            Explore deals{" "}
+            Explore deals
             <img
               className="transition group-hover:translate-x-1"
               src={assets.black_arrow_icon}
