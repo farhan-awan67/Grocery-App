@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import AllProducts from "./pages/AllProducts";
 import SpecificProduct from "./pages/SpecificProduct";
 import Cart from "./pages/Cart";
+import AddAddress from "./pages/AddAddress";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             element={<SpecificProduct />}
           />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/add-address" element={<AddAddress />} />
         </Routes>
 
         <Login />

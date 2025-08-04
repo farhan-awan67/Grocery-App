@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Links } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { assets, dummyAddress } from "../assets/greencart_assets/assets";
 
@@ -17,6 +17,7 @@ const Cart = () => {
   const [address, setAddress] = useState(dummyAddress);
   const [selectedAddress, setSelectedAddress] = useState(address[0]);
   const [showAddress, setShowAddress] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const matchedProducts = Object.keys(cartData)
@@ -155,7 +156,10 @@ const Cart = () => {
             </button>
             {showAddress && (
               <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
-                <p className="text-primary text-center cursor-pointer p-2 hover:bg-primary/10">
+                <p
+                  onClick={() => navigate("/add-address")}
+                  className="text-primary text-center cursor-pointer p-2 hover:bg-primary/10"
+                >
                   Add address
                 </p>
               </div>
